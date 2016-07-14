@@ -1,0 +1,16 @@
+<div class="row">
+	<div class="col-md-12">
+		<form action="/search" method="post">
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">Search videos</label>
+		    <input type="text" class="form-control" id="search_videos" placeholder="Search videos" name="search_video_text">
+		  </div>
+		  <button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div>
+</div>
+<br/>
+<br/>
+<?php echo $this->partial('application/partials/search-video-results.phtml', array(
+	'searchResult' => $searchResult
+	)); ?>

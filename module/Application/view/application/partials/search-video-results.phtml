@@ -1,0 +1,44 @@
+<?php if(isset($searchResult['list']) && count($searchResult['list']) > 0): ?>
+	<div class="row">
+		<p class="col-md-12">Search results for: <strong><?php echo $searchResult['query']; ?></strong></p>
+	</div>
+	<div class="row">
+		<div class="table-responsive col-md-12">
+			<table class="table table-striped">
+		  		<tr>
+		  			<th>Id</th>
+		  			<th>Video</th>
+		  			<th>Channel</th>
+		  			<th>Owner</th>
+		  		</tr>
+		  		<?php foreach($searchResult['list'] as $resultsList): ?>
+			  		<tr>
+			  			<td><?php echo $resultsList['id']; ?></td>
+						<td>
+							<a href="/search/video/<?php echo $resultsList['id']; ?>" title="<?php echo $resultsList['title']; ?>"><?php echo $resultsList['title']; ?></a>
+						</td>
+						<td><?php echo $resultsList['channel']; ?></td>
+						<td><?php echo $resultsList['owner']; ?></td>
+			  		</tr>
+		  		<?php endforeach; ?>
+			</table>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<nav>
+		  <ul class="pager">
+		  	
+		  	<?php $prevPage = ($searchResult['page'] > 1)? $prevPage = $searchResult['page']-1: $prevPage = 0; ?>
+		  	<?php if(!$prevPage == 0): ?>
+		    	<li class="previous"><a href="/search?page=<?php echo $prevPage; ?>&search=<?php echo $searchResult['query']; ?>"><span aria-hidden="true">&larr;</span> Prev</a></li>
+			<?php endif; ?>
+		    
+		    <?php $nextPage = ($searchResult['page'] >= 1 && $searchResult['page'] <= 99)? $nextPage = $searchResult['page']+1: $nextPage = 0; ?>
+		    <?php if(!$nextPage == 0): ?>
+		    	<li class="next"><a href="/search?page=<?php echo $nextPage; ?>&search=<?php echo $searchResult['query']; ?>">Next <span aria-hidden="true">&rarr;</span></a></li>
+			<?php endif; ?>
+		  
+		  </ul>
+		</nav>		
+	</div>
+<?php endif; ?>

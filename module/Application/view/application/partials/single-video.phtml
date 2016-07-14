@@ -1,0 +1,17 @@
+<?php if(isset($searchResult) && count($searchResult) > 0): ?>
+	<div class="row">
+		<div class="col-md-12">
+			
+		</div>
+
+		<div class="panel panel-default">
+		  <!-- Default panel contents -->
+		  <div class="panel-heading"><?php echo $searchResult['title']; ?></div>
+		  <div class="panel-body">
+		  	<p><strong>Owner:</strong> <?php echo $searchResult['owner']; ?></p>
+		  	<p><strong>Channel:</strong> <?php echo $searchResult['channel']; ?></p>
+		   	<a href="http://www.dailymotion.com/video/<?php echo $searchResult['id']; ?>" title="<?php echo $searchResult['title']; ?>">View video here</a>
+		  </div>
+		</div>
+	</div>
+<?php endif; ?>
